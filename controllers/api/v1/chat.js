@@ -1,20 +1,4 @@
-/*data opslaan in een schema, daarmee kunnen documenten gemaakt worden */
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-
-/*mogelijke veldjes in mongodb*/
-const chatSchema = new Schema({
-    text: {
-        type: String,
-        required:true}
-        ,
-    user:String,
-    completed:Boolean
-})
-
-
-const Message = mongoose.model('Chat', chatSchema);
-
+const Message = require('../../../models/chat');
 const getAll = (req,res)=>{
     Message.find({"user":"Angelique"},(err,docs)=>{
         if(!err){
@@ -34,10 +18,13 @@ const getAll = (req,res)=>{
 /* next kan de volgende middleware functie aanspreken*/
 const create = (req,res,next)=>{
 
+    /* body opvragen die je in postman opstuurt*/
+    console.log(req.body);
+
     let message = new Message();
-    message.text = "Eerste message";
-    message.user ="Angelique";
-    message.completed =false;
+    message.text = req.body.text;
+    message.user =req.body.user;
+    message.completed =req.body.completed;
     message.save((err,doc)=>{
         if(err){
             /* express handeld te error verder af
