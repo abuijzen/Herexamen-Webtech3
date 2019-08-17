@@ -8,6 +8,14 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const apiChatRouter = require('./routes/api/v1/chat');
 
+/*voordat de app start, eerst verbinding maken met data */
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/birthdaychat', {
+  useNewUrlParser: true
+});
+
+
+/*app starten*/
 const app = express();
 
 // view engine setup
