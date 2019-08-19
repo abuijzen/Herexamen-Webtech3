@@ -1,16 +1,16 @@
-//eventlistener op submit button
-let btnSignup = document.querySelector(".btn.btn--primary");
-btnSignup.addEventListener("click", click =>{
-
+//vanaf er geklikt wordt, worden de velden uitgelezen
+var btnlogin = document.querySelector(".login button").addEventListener("click",(e) => {
+ 
     //lees values uit de velden
     let username = document.querySelector("#email").value;
     let password = document.querySelector('#password').value;
     
-    //ajax call
-    fetch('http://localhost:3000/users/signup',{
+    //een post naar de login route maken
+    fetch('http://localhost:3000/users/login',{
         //post methode
         method:"post",
         //belangrijk bij fetch: meegeven welke content er heen en weer word gestuurd
+        //in dit geval: json
         headers:{
             'Content-Type': 'application/json'
         },
@@ -21,26 +21,21 @@ btnSignup.addEventListener("click", click =>{
             "username":username,
             "password":password
         })
-        //gkrijg je respons? krijg een antwoord dat word geparsed naar JSON 
+        //krijg je respons? krijg een antwoord dat word geparsed naar JSON 
         }).then(response=>{
             return response.json();
 
-        //als de status = "succes" is word de hidden boodschap getoond in het formulier
+        //als de status = "succes" is word de token gestockeerd
+        // + navigeren naar de applicatie
     }).then(json =>{
         if(json.status === "succes"){
-            let feedback = document.querySelector(".alert");
-            feedback.textContent= "Sign up complete!";
-            feedback.classList.remove('hidden');
-            //na het aanlogen een token aanspreken
             let token = json.data.token;
-
-            //token opslaan
             localStorage.setItem("token",token);
             window.location.href = "chat.html";
         }else{
             //indien er iets foutgaat: komt er een foutmelding te zien uit de hidden klasse
             let feedback = document.querySelector(".alert");
-            feedback.textContent = "User already exists";
+            feedback.textContent = "Something went wrong";
             feedback.classList.remove('hidden');
         }
 
