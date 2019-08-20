@@ -5,9 +5,7 @@ const Schema = mongoose.Schema;
 /*mogelijke veldjes in mongodb*/
 const chatSchema = new Schema({
     text: {
-        type: String,
-        required:true}
-        ,
+        type: String,required:true},
     user:String,
     completed:Boolean
 })

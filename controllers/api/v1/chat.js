@@ -1,6 +1,7 @@
 const Message = require('../../../models/chat');
+
 const getAll = (req,res)=>{
-    Message.find({"user":"Angelique"},(err,docs)=>{
+    Message.find({"user":req.user._id},(err,docs)=>{
         if(!err){
             res.json({
                 "status":"succes",
@@ -23,7 +24,7 @@ const create = (req,res,next)=>{
 
     let message = new Message();
     message.text = req.body.text;
-    message.user =req.body.user;
+    //message.user =req.body.user.username;
     message.completed =req.body.completed;
     message.save((err,doc)=>{
         if(err){
@@ -45,7 +46,7 @@ const create = (req,res,next)=>{
             res.json({
                 "status": "succes",
                 "data":{
-                    "message":doc
+                    "message":doc,
                 }
             });
 

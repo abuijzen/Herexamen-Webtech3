@@ -57,7 +57,8 @@ const login = async(req,res,next)=>{
         return res.json({
             "status":"succes",
             "data":{
-                "token":token
+                "token":token,
+                //"user":result.user.username
             }
         });
     }).catch(error =>{
