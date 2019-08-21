@@ -23,10 +23,15 @@ const create = (req,res,next)=>{
     /* body opvragen die je in postman opstuurt*/
     console.log(req.body);
 
+    //let birthday = json.data.message.birthday;
+    
+
     let message = new Message();
     message.text = req.body.text;
     message.user = req.user.username;
-    //message.user =req.body.user.username;
+    //message.birthday = req.user.birthday;
+    //message.birthdayCount = db.users.find({"birthday" : req.user.birthday}).count();
+   
     message.completed =req.body.completed;
     message.save((err,doc)=>{
         if(err){

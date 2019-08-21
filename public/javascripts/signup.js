@@ -4,6 +4,7 @@ btnSignup.addEventListener("click", click =>{
 
     //lees values uit de velden
     let username = document.querySelector("#email").value;
+    let birthday = document.querySelector('#birthday').value;
     let password = document.querySelector('#password').value;
     
     //ajax call
@@ -19,7 +20,9 @@ btnSignup.addEventListener("click", click =>{
         //bestaande uit username en password
         body: JSON.stringify({
             "username":username,
+            "birthday":birthday,
             "password":password
+            
         })
         //gkrijg je respons? krijg een antwoord dat word geparsed naar JSON 
         }).then(response=>{

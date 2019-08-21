@@ -9,9 +9,11 @@ const signup = async (req, res, next) => {
     
     let username = req.body.username;
     let password = req.body.password;
+    let birthday = req.body.birthday;
 
     const user = new User({
-        username: username
+        username: username,
+        birthday:birthday
     });
 
     await user.setPassword(password);
@@ -21,7 +23,8 @@ const signup = async (req, res, next) => {
 
         let token = jwt.sign({
             uid:result._id,
-            username: result.username
+            username: result.username,
+            birthday:req.body.birthday
         }, "myVerySecretWord");
 
         res.json({
@@ -39,7 +42,7 @@ const signup = async (req, res, next) => {
 };
 
 const login = async(req,res,next)=>{
-    const user = await User.authenticate()(req.body.username,req.body.password).then(result =>{
+    const user = await User.authenticate()(req.body.username,req.body.password,req.body.birthday).then(result =>{
         
         if(!result.user){
             return res.json({
@@ -51,6 +54,7 @@ const login = async(req,res,next)=>{
 
         let token = jwt.sign({
             uid:result.user._id,
+            birthday:result.user.birthday
             //username: result.user.username
         }, "myVerySecretWord");
         
