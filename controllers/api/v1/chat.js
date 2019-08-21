@@ -1,7 +1,8 @@
 const Message = require('../../../models/chat');
 
 const getAll = (req,res)=>{
-    Message.find({"user":req.user._id},(err,docs)=>{
+    //krijg alleen de messages van de gebruiker zelf
+    Message.find({/*"user":req.user._id*/},(err,docs)=>{
         if(!err){
             res.json({
                 "status":"succes",
@@ -24,6 +25,7 @@ const create = (req,res,next)=>{
 
     let message = new Message();
     message.text = req.body.text;
+    message.user = req.user.username;
     //message.user =req.body.user.username;
     message.completed =req.body.completed;
     message.save((err,doc)=>{

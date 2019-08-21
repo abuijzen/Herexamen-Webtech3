@@ -51,7 +51,7 @@ const login = async(req,res,next)=>{
 
         let token = jwt.sign({
             uid:result.user._id,
-            username: result.user.username
+            //username: result.user.username
         }, "myVerySecretWord");
         
         return res.json({

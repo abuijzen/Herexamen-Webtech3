@@ -44,8 +44,10 @@ input.addEventListener("keyup", e => {
 
             let message = `<div class="todo">
             <input type="checkbox" class="todo__state">
+            <div class="todo__text">${json.data.message.user}</div>: &nbsp;
             
             <div class="todo__text">${json.data.message.text}</div>
+            
             <a class="todo__delete" href="#" data-id="${json.data.message._id}">delete</a>
             </div>`
 
