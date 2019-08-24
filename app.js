@@ -6,6 +6,8 @@ const logger = require('morgan');
 const cors = require('cors');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+//const birthday = 212;
+
 const apiChatRouter = require('./routes/api/v1/chat');
 const passport = require('./passport/passport');
 
@@ -37,9 +39,10 @@ app.use('/', indexRouter);
 
 app.use('/users', usersRouter);
 
+let birthday= 31;
 /*middleware*/
+//alle routes die hieraan voldoen worden met deze middleware verwerkt
 app.use('/api/v1/chat', passport.authenticate('jwt', { session: false }), apiChatRouter);
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

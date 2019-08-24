@@ -1,5 +1,9 @@
 //chat oproepen
-fetch('http://localhost:3000/api/v1/chat', {
+
+//let birthday = req.user.birthday;
+//let route = JSON.stringify({birthday});
+
+fetch('http://localhost:3000/api/v1/chat/', {
     
     //nodige headers meegeven met localstorage
     'headers':{
@@ -51,6 +55,7 @@ input.addEventListener("keyup", e => {
             let message = `<div class="todo">
             
             <div class="todo__text todo--completed">${json.data.message.user}: </div>&nbsp;
+            <div class="todo__text todo--completed">${Date(json.data.message.birthday)}: </div>&nbsp;
             
             <div class="todo__text">${json.data.message.text}</div>
             

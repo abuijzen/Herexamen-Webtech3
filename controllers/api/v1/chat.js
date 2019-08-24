@@ -1,13 +1,15 @@
 const Message = require('../../../models/chat');
 
 const getAll = (req,res)=>{
+    //res.send(req.params)
     //krijg alleen de messages van de gebruiker zelf
-    Message.find({/*"user":req.user._id*/},(err,docs)=>{
+    Message.find({"user":req.user.birthday},(err,docs)=>{
         if(!err){
             res.json({
                 "status":"succes",
                 "data":{
-                    "chat":docs
+                    "chat":docs,
+                   // "user":docs
                 }
 
             });
@@ -23,16 +25,16 @@ const create = (req,res,next)=>{
     /* body opvragen die je in postman opstuurt*/
     console.log(req.body);
 
-    //let birthday = json.data.message.birthday;
+    //let birthday = req.user.birthday;
     
 
     let message = new Message();
     message.text = req.body.text;
     message.user = req.user.username;
-    //message.birthday = req.user.birthday;
+    message.birthday = req.user.birthday;
+    console.log(req.user.birthday);
     //message.birthdayCount = db.users.find({"birthday" : req.user.birthday}).count();
    
-    message.completed =req.body.completed;
     message.save((err,doc)=>{
         if(err){
             /* express handeld te error verder af

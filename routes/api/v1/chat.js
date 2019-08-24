@@ -3,7 +3,7 @@ const router = express.Router();
 const chatController = require('../../../controllers/api/v1/chat')
 
 /* /api/v1/chat */
-
+const birthday = 2120;
 router.get("/", chatController.getAll);
 
 router.post("/",chatController.create);

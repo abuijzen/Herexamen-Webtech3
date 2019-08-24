@@ -43,7 +43,7 @@ btnSignup.addEventListener("click", click =>{
         }else{
             //indien er iets foutgaat: komt er een foutmelding te zien uit de hidden klasse
             let feedback = document.querySelector(".alert");
-            feedback.textContent = "User already exists";
+            feedback.textContent = "Something went wrong";
             feedback.classList.remove('hidden');
         }
 

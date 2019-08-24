@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const passportLocalMongoose = require('passport-local-mongoose');
 
 const User = new Schema({
-    birthday: {type:Date, required:true}
+    birthday: {type:String, required:true}
 });
 User.plugin(passportLocalMongoose);
 
