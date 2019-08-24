@@ -1,0 +1,8 @@
+{
+    "Database": {
+        "conn": "mongodb+srv://Angelique:Angelique@cluster0-y3iry.mongodb.net/test?retryWrites=true&w=majority"
+    },
+    "jwt": {
+        "secret": "myVerySecretWord"
+    }
+}
