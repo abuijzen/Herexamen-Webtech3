@@ -39,7 +39,7 @@ app.use('/', indexRouter);
 
 app.use('/users', usersRouter);
 
-let birthday= 31;
+//let birthday= 31;
 /*middleware*/
 //alle routes die hieraan voldoen worden met deze middleware verwerkt
 app.use('/api/v1/chat', passport.authenticate('jwt', { session: false }), apiChatRouter);
