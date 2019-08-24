@@ -10,13 +10,16 @@ const usersRouter = require('./routes/users');
 
 const apiChatRouter = require('./routes/api/v1/chat');
 const passport = require('./passport/passport');
+const config = require('./config');
 
 /*voordat de app start, eerst verbinding maken met data */
 const mongoose = require('mongoose');
 mongoose.set('useCreateIndex',true);
-mongoose.connect('mongodb://localhost:27017/birthdaychat', {
+mongoose.connect(config.get('Database.conn'), {
   useNewUrlParser: true
 });
+
+console.log(config.get('Database'));
 
 
 /*app starten*/
