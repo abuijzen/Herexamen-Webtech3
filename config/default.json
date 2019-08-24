@@ -1,8 +1,8 @@
 {
     "Database": {
-        "conn":"mongodb://localhost:27017/birthdaychat"
+        "conn": "mongodb://localhost:27017/birthdaychat"
     },
     "jwt": {
-        "secret":"myVerySecretWord"
+        "secret": "myVerySecretWord"
     }
 }

@@ -1,3 +1,4 @@
+const config = require('config');
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -10,7 +11,7 @@ const usersRouter = require('./routes/users');
 
 const apiChatRouter = require('./routes/api/v1/chat');
 const passport = require('./passport/passport');
-const config = require('./config');
+
 
 /*voordat de app start, eerst verbinding maken met data */
 const mongoose = require('mongoose');
