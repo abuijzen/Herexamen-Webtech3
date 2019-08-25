@@ -3,8 +3,7 @@ const Message = require('../../../models/chat');
 const getAll = (req,res)=>{
     //res.send(req.params)
     //krijg alleen de messages van de gebruiker zelf
-    let birthday = req.user.birthday;
-    console.log(birthday);
+    
     Message.find({"birthday":req.user.birthday},(err,docs)=>{
         if(!err){
             res.json({
@@ -33,7 +32,6 @@ const create = (req,res,next)=>{
     message.text = req.body.text;
     message.user = req.user.username;
     message.birthday = req.user.birthday;
-    message.postdate = new date();
     //message.birthdayCount = db.users.find({"birthday" : req.user.birthday}).count();
    
     message.save((err,doc)=>{
