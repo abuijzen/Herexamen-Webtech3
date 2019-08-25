@@ -8,8 +8,7 @@ const getAll = (req,res)=>{
             res.json({
                 "status":"succes",
                 "data":{
-                    "chat":docs,
-                   // "user":docs
+                    "chat":docs
                 }
 
             });
