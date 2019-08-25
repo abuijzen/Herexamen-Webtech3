@@ -3,7 +3,7 @@ const Message = require('../../../models/chat');
 const getAll = (req,res)=>{
     //res.send(req.params)
     //krijg alleen de messages van de gebruiker zelf
-    Message.find({"birthday":req.user.birthday},(err,docs)=>{
+    Message.find({"user":spam},(err,docs)=>{
         if(!err){
             res.json({
                 "status":"succes",
