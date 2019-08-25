@@ -7,7 +7,9 @@ const chatSchema = new Schema({
     "text": {
         type: String,required:true},
     "user":String,
+    "postdate":Date,
     "birthday":String
+
 });
 
 
