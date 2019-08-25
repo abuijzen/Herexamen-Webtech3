@@ -7,8 +7,8 @@ const chatSchema = new Schema({
     "text": {
         type: String,required:true},
     "user":String,
-    "completed":Boolean
-})
+    "birthday":String
+});
 
 
 const Message = mongoose.model('Message', chatSchema);
