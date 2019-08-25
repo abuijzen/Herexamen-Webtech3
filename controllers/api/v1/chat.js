@@ -5,7 +5,7 @@ const getAll = (req,res)=>{
     //krijg alleen de messages van de gebruiker zelf
     let birthday = req.user.birthday;
     console.log(birthday);
-    Message.find({/*"birthday":"2019-08-06"*/},(err,docs)=>{
+    Message.find({"birthday":req.user.birthday},(err,docs)=>{
         if(!err){
             res.json({
                 "status":"succes",
