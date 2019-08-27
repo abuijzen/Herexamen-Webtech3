@@ -1,7 +1,6 @@
 const Message = require('../../../models/chat');
 
 const getAll = (req,res)=>{
-    res.redirect('/admin');
     //res.send(req.params)
     //krijg alleen de messages van de gebruiker zelf
     
