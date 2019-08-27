@@ -3,7 +3,7 @@ const passport = require('../passport/passport');
 const jwt = require('jsonwebtoken');
 const config =require('config');
 
-
+//assyncroon functie, awaits worden als laatste uitgevoerd
 const signup = async (req, res, next) => {
 
     console.log(req.body);
@@ -17,11 +17,13 @@ const signup = async (req, res, next) => {
         birthday:birthday
     });
 
+    //wachtwoord + encryptie
     await user.setPassword(password);
+    //user opslaan via mongoose
     await user.save().then(result =>{
 
         console.log(result);
-
+        //token aanmaken
         let token = jwt.sign({
             uid:result._id,
             username: result.username,
@@ -43,6 +45,9 @@ const signup = async (req, res, next) => {
 };
 
 const login = async(req,res,next)=>{
+    //wachten op user model
+    //authenthenicate = vergelijking user en hash in mongoDB
+    //input komt uit username + password
     const user = await User.authenticate()(req.body.username,req.body.password,req.body.birthday).then(result =>{
         
         if(!result.user){

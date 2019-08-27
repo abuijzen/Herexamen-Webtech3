@@ -1,6 +1,7 @@
 const Message = require('../../../models/chat');
 
 const getAll = (req,res)=>{
+    //res.redirect('/birthday');
     //res.send(req.params)
     //krijg alleen de messages van de gebruiker zelf
     
@@ -27,13 +28,17 @@ const create = (req,res,next)=>{
 
     //let birthday = req.user.birthday;
     
-
+    //nieuwe instantie van message item maken
     let message = new Message();
+
+    //message bevat text, user, birthday gelinkt aan user
+    //body is iets dat je zelf invult en meegeeft
     message.text = req.body.text;
     message.user = req.user.username;
     message.birthday = req.user.birthday;
     //message.birthdayCount = db.users.find({"birthday" : req.user.birthday}).count();
    
+    //message opslaan -> error of doc wordt afgehandeld
     message.save((err,doc)=>{
         if(err){
             /* express handeld te error verder af

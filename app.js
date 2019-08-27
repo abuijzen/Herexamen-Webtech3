@@ -5,21 +5,23 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
+
+//routes inladen
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-//const birthday = 212;
-
 const apiChatRouter = require('./routes/api/v1/chat');
-const passport = require('./passport/passport');
 
+const passport = require('./passport/passport');
 
 /*voordat de app start, eerst verbinding maken met data */
 const mongoose = require('mongoose');
+//gebruik nieuwste versie om indexes te gebruiken op true
 mongoose.set('useCreateIndex',true);
+//mongoose connect met variabele op heroku of variabele in config file
 mongoose.connect(process.env.dbconn || config.get('Database.conn'), {
   useNewUrlParser: true
 });
-
+//connectie loggen
 console.log(config.get('Database'));
 
 
@@ -32,15 +34,17 @@ app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
+
+//vanaf dat json gestuurd word zal express deze parsen/ontleden
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//toestaan om te communiceren tussen meerdere
 app.use(cors());
 
 //homepagerouter
 app.use('/', indexRouter);
-
 app.use('/users', usersRouter);
 
 //let birthday= 31;

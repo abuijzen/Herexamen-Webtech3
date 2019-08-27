@@ -1,5 +1,7 @@
 /*data opslaan in een schema, daarmee kunnen documenten gemaakt worden */
 const mongoose = require('mongoose');
+
+//object schema gebruiken
 const Schema = mongoose.Schema;
 
 /*mogelijke veldjes in mongodb*/
@@ -12,7 +14,8 @@ const chatSchema = new Schema({
 
 });
 
-
+//klasse maken op mongoose met collection name: Message
+//op basis van chatSchema
 const Message = mongoose.model('Message', chatSchema);
 
 module.exports = Message;
